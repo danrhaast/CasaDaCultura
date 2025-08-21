@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "dayjs": "^1.11.13",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "express-layout": "^0.1.0",
+    "node": "^24.6.0",
+    "nodemon": "^3.1.10",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.7"
+  }
+}
