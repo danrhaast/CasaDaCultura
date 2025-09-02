@@ -1,0 +1,36 @@
+<section>
+    <div class="header">
+        <%- include('Partials/header')%>
+    </div>
+
+    <div class="container">
+        <form action="/matricula" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" placeholder="Digite o nome do aluno"><br><br>
+
+            <label for="email">Email:</label>
+            <input type="text" name="email" placeholder="Digite o email do aluno"><br><br>
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" name="telefone" placeholder="Digite o telefone"><br><br>
+
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" placeholder="Digite o CPF do aluno ou responsável"><br><br> 
+
+            <label for="genero">Gênero</label>
+            <label>
+                <br> Masculino
+                <input type="radio" name="genero" value="masculino">
+            </label>
+            <label>
+                <br> Feminino
+                <input type="radio" name="genero" value="feminino">
+            </label><br><br>
+
+            <label for="senha">Senha</label>
+            <input type="text" name="senha" placeholder="Digite sua senha"> <br><br>
+
+            <button type="submit">Matricular</button>
+        </form>
+    </div>
+</section>

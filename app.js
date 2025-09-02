@@ -1,16 +1,17 @@
 const expressEjsLayout = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config()
-const { error } = require('console')
+const error = require('console')
 const express = require('express')
 const path = require('path')
 const app = express()
+const alunoRoutes = require('./routes/alunoRoutes')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 
 app.use(expressEjsLayout)
-app.set('layout', 'layout/main')
+app.set('layout', 'Layout/main')
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
@@ -18,6 +19,13 @@ app.use(bodyParser.json())
 app.get('/', function(req, res) {
     res.render('home', {title: 'Casa da Cultura'})
 })
+
+app.get('/form', function(req, res) {
+    res.render('form', {title: 'Casa da Cultura'})
+})
+
+app.use('/', alunoRoutes)
+
 
 app.listen(8120, function (error) {
     if (error) {

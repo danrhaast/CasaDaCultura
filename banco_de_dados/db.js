@@ -12,13 +12,13 @@ const sequelize = new Sequelize(
 )
 
 
-sequelize.authenticate() 
-    try {
+sequelize.authenticate()
+    .then(() => {
         console.log('Conectado com sucesso!')
-    }
-    catch (error) {
-        console.log('Falha na conexão: ' + error);
-    }
+    })
+    .catch(error => {
+        console.log('Falha na conexão: ' + error)
+    })
 
 module.exports = {
     Sequelize,

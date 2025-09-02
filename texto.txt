@@ -1,0 +1,22 @@
+
+app.get('/alunos', function(req, res) {
+    Alunos.findAll({order:[['id', 'DESC']]}).then(function(alunos){
+        res.render('Alunos/tabAlunos', {alunos: alunos, title: 'Casa da Cultura'})
+    })
+})
+
+app.post('/matricula', function(req, res) {
+    Alunos.create({
+        nome: req.body.nome,
+        email: req.body.email,
+        telefone: req.body.telefone,
+        cpf: req.body.cpf,
+        genero: req.body.genero,
+        senha: req.body.senha
+
+    }).then(function (){
+        res.redirect('alunos')
+    }).catch(function (error){
+        console.log('Erro na matricula' +error)
+    })
+})

@@ -9,27 +9,15 @@ const Alunos = db.sequelize.define('alunos', {
     },
     telefone: {
         type: db.Sequelize.STRING,
-        validate: {
-            isNumeric: true,
-            len: [11]
-        }
     },
-    CPF: {
+    cpf: {
         type: db.Sequelize.STRING,
-        validate: {
-            isNumeric: true,
-            len: [11]
-        }
     },
     genero: {
         type: db.Sequelize.STRING
     },
     senha: {
         type: db.Sequelize.STRING,
-        validate: {
-            isNumeric: true,
-            len: [10]
-        }
     }
 })
 
