@@ -1,4 +1,4 @@
-const Alunos = require('../models/alunosModels')
+const Alunos = require('../B.models/alunosModels')
 
 const cadastrarAl = (req, res) => {
     Alunos.create({

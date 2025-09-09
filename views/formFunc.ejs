@@ -1,0 +1,72 @@
+<section>
+    <div class="header">
+        <%- include('Partials/header')%>
+    </div>
+
+    <div class="container">
+        <form action="/cadastroFunc" method="POST">
+
+            <!-- Nome -->
+
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome"><br><br>
+
+
+            <!-- Email -->
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email"><br><br>
+
+
+            <!-- Telefone -->
+
+            <label for="telefone">Telefone:</label>
+            <input type="text" name="telefone" id="telefone" placeholder="Somente números"><br><br>
+
+
+            <!-- CPF -->
+
+            <label for="cpf">CPF:</label>
+            <input type="text" name="cpf" id="cpf" placeholder="Somente números"><br><br>
+
+
+            <!-- Gênero -->
+
+            <label for="genero">Gênero:</label>
+            <select name="genero" id="genero">
+                <option value="">Selecione</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
+                <option value="Prefiro não informar">Prefiro não informar</option>
+            </select><br><br>
+
+
+            <!-- Capacitações (checkboxes) -->
+
+            <label>Função na casa:</label><br>
+            <input type="text" name="funcao" placeholder="Digite sua função">
+            <br><br>
+
+            <!-- Horários detalhados -->
+
+            <label for="horarios">Horários (com intervalos):</label><br><br>
+            <textarea name="horarios" id="horarios" rows="6"
+                placeholder="Exemplo:&#10;Aulas:&#10;13:30 - 14:30&#10;14:30 - 15:30&#10;15:45 - 16:45&#10;16:45 - 17:45&#10;&#10;Intervalo:&#10;15:30 - 15:45"></textarea>
+            <br><br>
+
+            <!-- Senha -->
+
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha"><br><br>
+
+
+            <!-- Botão -->
+
+            <button type="submit">Cadastrar Professor
+            </button>
+
+        </form>
+    </div>
+
+</section>

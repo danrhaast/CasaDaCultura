@@ -1,4 +1,4 @@
-const db = require('../banco_de_dados/db')
+const db = require('../A.banco_de_dados/db')
 
 const Alunos = db.sequelize.define('alunos', {
     nome: {

@@ -5,7 +5,9 @@ const error = require('console')
 const express = require('express')
 const path = require('path')
 const app = express()
-const alunoRoutes = require('./routes/alunoRoutes')
+const alunoRoutes = require('./D.routes/alunoRoutes')
+const profeRoutes = require('./D.routes/profeRoutes')
+const funcRoutes = require('./D.routes/funcRoutes')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -24,7 +26,17 @@ app.get('/form', function(req, res) {
     res.render('form', {title: 'Casa da Cultura'})
 })
 
+app.get('/formProfe', function(req, res){
+    res.render('formProfe', {title: 'Casa da Cultura'})
+})
+
+app.get('/formFunc', function(req, res){
+    res.render('formFunc', {title: 'Casa da Cultura'})
+})
+
 app.use('/', alunoRoutes)
+app.use('/', profeRoutes)
+app.use('/', funcRoutes)
 
 
 app.listen(8120, function (error) {

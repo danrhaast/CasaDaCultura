@@ -1,0 +1,50 @@
+<section>
+    <div class="header">
+    <%- include('../Partials/header') %>
+</div>
+
+<div class="container">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+                <th>Gênero</th>
+                <th>Aulas</th>
+                <th>Horários</th>
+                <th>Senha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (professores.length === 0) { %>
+                <tr>
+                    <td>Nenhum professor cadastrado.</td>
+                </tr>
+            <% } else { %>
+                <% professores.forEach(professores => { %>
+                    <tr>
+                        <td><%= professores.id %></td>
+                        <td><%= professores.nome %></td>
+                        <td><%= professores.email %></td>
+                        <td><%= professores.telefone %></td>
+                        <td><%= professores.cpf %></td>
+                        <td><%= professores.genero %></td>
+                        <td><%= professores.aulas %></td>
+                        <td><%= professores.horarios %></td>
+                        <td> <%= professores.senha %></td>
+
+                        <td>
+                            <a href="/deletar/<%= professores.id %>" id="btn-edit" class="delete">Deletar</a>
+                            <a href="/atualizar/<%= professores.id %>" id="btn-edit" class="edit">Editar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+</section>
+

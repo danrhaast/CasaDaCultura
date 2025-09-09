@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const alunosController = require('../controllers/alunosController')
+const alunosController = require('../C.controllers/alunosController')
 
 router.get('/alunos', alunosController.listarAl)
 router.post('/matricula', alunosController.cadastrarAl)
