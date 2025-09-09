@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 20px;
+    font-style: normal;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    width: 70%;
+    padding: 5vw;
+}
+
+.center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(39, 39, 39);
+    width: 25%;
+    height: 100vh;
+}
+
+#formLogin {
+    color: rgb(244, 255, 255);
+}
+
+nav {
+    height: 90.5vh;
+    background-color: rgb(39, 39, 39);
+    padding: 5vw;
+}
+
+ul {
+    margin-bottom: 5vh;
+}
+
+a {
+    font-size: 20px;
+    color: rgb(244, 255, 255);
+    text-decoration: none;
+}
+
+#btn-edit {
+    padding: 7px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+.edit {
+    background-color: green;
+}
+.delete {
+    background-color: red;
+}

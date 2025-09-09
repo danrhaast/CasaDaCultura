@@ -1,0 +1,10 @@
+<h2>Lista de Aulas</h2>
+<ul>
+  <% aulas.forEach(aula => { %>
+    <li>
+      <strong><%= aula.nome %></strong> - <%= aula.horario %> 
+      (Professor: <%= aula.professore ? aula.professore.nome : 'Não definido' %>)
+      <a href="/aulas/<%= aula.id %>">Ver detalhes</a>
+    </li>
+  <% }) %>
+</ul>

@@ -8,9 +8,11 @@ const app = express()
 const alunoRoutes = require('./D.routes/alunoRoutes')
 const profeRoutes = require('./D.routes/profeRoutes')
 const funcRoutes = require('./D.routes/funcRoutes')
+const aulaRoutes = require('./D.routes/aulaRoutes')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(expressEjsLayout)
 app.set('layout', 'Layout/main')
@@ -20,6 +22,10 @@ app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
     res.render('home', {title: 'Casa da Cultura'})
+})
+
+app.get('/login', function(req, res) {
+    res.render('login', {title: 'Casa da Cultura'})
 })
 
 app.get('/form', function(req, res) {
@@ -37,6 +43,7 @@ app.get('/formFunc', function(req, res){
 app.use('/', alunoRoutes)
 app.use('/', profeRoutes)
 app.use('/', funcRoutes)
+app.use('/', aulaRoutes)
 
 
 app.listen(8120, function (error) {

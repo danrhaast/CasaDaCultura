@@ -19,6 +19,8 @@ const listarAl = (req, res) => {
         }).catch(error => console.log('Erro ao listar alunos', error))
 }
 
+
+
 const deletarAl = (req, res) => {
     Alunos.destroy({
         where: { id: req.params.id }
