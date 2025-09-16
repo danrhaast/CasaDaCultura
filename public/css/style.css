@@ -7,6 +7,10 @@
     font-style: normal;
 }
 
+body {
+    background-color: rgb(131, 131, 131);
+}
+
 section {
     display: flex;
     flex-direction: row;
@@ -41,13 +45,21 @@ div {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     background-color: rgb(39, 39, 39);
     width: 25%;
     height: 100vh;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
 }
 
 #formLogin {
     color: rgb(244, 255, 255);
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
@@ -64,6 +76,26 @@ a {
     font-size: 20px;
     color: rgb(244, 255, 255);
     text-decoration: none;
+}
+
+.btn-sign {
+    margin: 12px;
+    border: none;
+    width: 40%;
+    padding: 10px;
+}
+
+input {
+    border: none;
+    padding: 5px;
+    border-radius: 8px;
+    width: 200px;
+    outline: none;
+    transition: box-shadow 0.3s ease;
+}
+
+input:focus {     /* muda a cor da borda */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
 }
 
 #btn-edit {
