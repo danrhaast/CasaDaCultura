@@ -40,6 +40,11 @@ app.get('/formFunc', function(req, res){
     res.render('formFunc', {title: 'Casa da Cultura'})
 })
 
+app.get('/dashboard', (req, res) => {
+    if (!req.session.user) return res.redirect('/login');
+    res.send(`Bem-vindo, ${req.session.user.nome} (${req.session.user.role})`);
+});
+
 app.use('/', alunoRoutes)
 app.use('/', profeRoutes)
 app.use('/', funcRoutes)

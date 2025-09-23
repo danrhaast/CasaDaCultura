@@ -32,6 +32,9 @@ div {
 .container {
     width: 70%;
     padding: 5vw;
+    display: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .center {
@@ -86,16 +89,18 @@ a {
 }
 
 input {
-    border: none;
+    border: 1.8px solid transparent;
     padding: 5px;
+    margin: 2px;
     border-radius: 8px;
     width: 200px;
     outline: none;
-    transition: box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 input:focus {     /* muda a cor da borda */
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+    border-color: rgb(31, 31, 154); /* só troca a cor */
+    box-shadow: 0 0 0 2px rgba(130, 163, 255, 0.808); 
 }
 
 #btn-edit {

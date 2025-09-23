@@ -1,9 +1,15 @@
+// D.routes/alunoRoutes.js
 const express = require('express')
 const router = express.Router()
-const alunosController = require('../C.controllers/alunosController')
+const { isLoggedIn, authRole } = require('../middleware/authMiddleware')
+const alunoController = require('../C.controllers/alunoController')
 
-router.get('/alunos', alunosController.listarAl)
-router.post('/matricula', alunosController.cadastrarAl)
-router.get('/deletar/:id', alunosController.deletarAl)
+// Perfil do aluno
+router.get('/aluno/perfil', isLoggedIn, authRole('aluno'), alunoController.perfil)
+
+// Consultar aulas, professores e horários
+router.get('/aluno/aulas', isLoggedIn, authRole('aluno'), alunoController.listarAulas)
+router.get('/aluno/professores', isLoggedIn, authRole('aluno'), alunoController.listarProfessores)
+router.get('/aluno/horarios', isLoggedIn, authRole('aluno'), alunoController.listarHorarios)
 
 module.exports = router

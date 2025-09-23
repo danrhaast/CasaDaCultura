@@ -1,15 +1,31 @@
 const Alunos = require('../B.models/alunosModels')
+const bcrypt = require('bcrypt')
 
-const cadastrarAl = (req, res) => {
-    Alunos.create({
-        nome: req.body.nome,
-        email: req.body.email,
-        telefone: req.body.telefone,
-        cpf: req.body.cpf,
-        genero: req.body.genero,
-        senha: req.body.senha
-    }).then(() => res.redirect('/alunos'))
-        .catch(error => console.log('Erro na matrícula: ', error))
+const cadastrarAl = async (req, res) => {
+    try {
+        const senhaHash = await bcrypt.hash(req.body.senha, 10)
+        await Alunos.create({
+            nome: req.body.nome,
+            email: req.body.email,
+            telefone: req.body.telefone,
+            cpf: req.body.cpf,
+            genero: req.body.genero,
+            senha: senhaHash
+        })
+
+        await Usuario.create({
+            nome: req.body.nome,
+            email: req.body.email,
+            senha: senhaHash,
+            role: 'aluno'
+        })
+
+
+        res.redirect('/alunos')
+    } catch (error) {
+        console.log('Erro na matrícula: ', error)
+        res.status(500).send('Erro ao cadastrar aluno')
+    }
 }
 
 const listarAl = (req, res) => {
