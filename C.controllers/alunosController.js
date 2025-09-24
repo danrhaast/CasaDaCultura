@@ -44,7 +44,18 @@ const deletarAl = (req, res) => {
         .catch(error => console.log('Erro ao deletar aluno: ', error))
 }
 
+const perfil = async (req, res) => {
+    try {
+        const aluno = await Alunos.findByPk(req.session.user.id)
+        res.render('Alunos/perfilAluno', { aluno, title: 'Meu Perfil' })
+    } catch (error) {
+        console.log('Erro ao carregar perfil:', error)
+        res.status(500).send('Erro ao carregar perfil')
+    }
+}
+
 module.exports = {
+    perfil,
     cadastrarAl,
     listarAl,
     deletarAl

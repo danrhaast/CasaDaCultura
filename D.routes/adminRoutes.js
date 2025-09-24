@@ -1,7 +1,7 @@
 // D.routes/adminRoutes.js
 const express = require('express')
 const router = express.Router()
-const { isLoggedIn, authRole } = require('../middleware/authMiddleware')
+const { isLoggedIn, authRole } = require('../E.middleware/authMiddleware')
 const adminController = require('../C.controllers/adminController')
 
 // Painel ADM
