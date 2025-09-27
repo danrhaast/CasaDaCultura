@@ -1,7 +1,7 @@
 // D.routes/profeRoutes.js
 const express = require('express')
 const router = express.Router()
-const { isLoggedIn, authRole } = require('../E.middleware/authMiddleware')
+//const { isLoggedIn, authRole } = require('../E.middleware/authMiddleware')
 const profeController = require('../C.controllers/profeController')
 
 // Perfil do professor

@@ -13,7 +13,7 @@ const Usuario = db.sequelize.define('usuarios', {
         type: db.Sequelize.STRING,
     },
     role: {
-        type: db.Sequelize.ENUM('aluno', 'professor', 'adm'),
+        type: db.Sequelize.ENUM('aluno', 'professor', 'adm', 'funcionario'),
         allowNull: false
     }
 })
