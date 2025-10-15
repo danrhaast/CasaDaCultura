@@ -7,18 +7,15 @@ const sequelize = new Sequelize(
     process.env.SEQUELIZE_PASSWORD,
     {
         host: process.env.SEQUELIZE_HOST || 'localhost',
-        dialect: 'mysql'
+        dialect: 'mysql',
+        logging: false
     }
 )
 
 
 sequelize.authenticate()
-    .then(() => {
-        console.log('Conectado com sucesso!')
-    })
-    .catch(error => {
-        console.log('Falha na conexão: ' + error)
-    })
+    .then(() => { console.log('Conectado com sucesso!') })
+    .catch(error => { console.log('Falha na conexão: ' + error) })
 
 module.exports = {
     Sequelize,

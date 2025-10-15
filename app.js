@@ -1,3 +1,4 @@
+const session = require('express-session')
 const expressEjsLayout = require('express-ejs-layouts')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config()
@@ -9,6 +10,8 @@ const alunoRoutes = require('./D.routes/alunoRoutes')
 const profeRoutes = require('./D.routes/profeRoutes')
 const funcRoutes = require('./D.routes/funcRoutes')
 const aulaRoutes = require('./D.routes/aulaRoutes')
+const adminRoutes = require('./D.routes/adminRoutes')
+const authController = require('./C.controllers/authController')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -20,6 +23,15 @@ app.set('layout', 'Layout/main')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'danielgotoso',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maAge: 1000 * 60 * 60 }
+}))
+
+app.use('/', require('./D.routes/adminRoutes'))
+
 app.get('/', function(req, res) {
     res.render('home', {title: 'Casa da Cultura'})
 })
@@ -27,6 +39,9 @@ app.get('/', function(req, res) {
 app.get('/login', function(req, res) {
     res.render('login', {title: 'Casa da Cultura'})
 })
+
+app.post('/login', authController.login)
+app.get('/logout', authController.logout)
 
 app.get('/form', function(req, res) {
     res.render('form', {title: 'Casa da Cultura'})
@@ -39,11 +54,6 @@ app.get('/formProfe', function(req, res){
 app.get('/formFunc', function(req, res){
     res.render('formFunc', {title: 'Casa da Cultura'})
 })
-
-app.get('/dashboard', (req, res) => {
-    if (!req.session.user) return res.redirect('/login');
-    res.send(`Bem-vindo, ${req.session.user.nome} (${req.session.user.role})`);
-});
 
 app.use('/', alunoRoutes)
 app.use('/', profeRoutes)

@@ -5,11 +5,11 @@ const { isLoggedIn, authRole } = require('../E.middleware/authMiddleware')
 const adminController = require('../C.controllers/adminController')
 
 // Painel ADM
-router.get('/admin/dashboard', isLoggedIn, authRole('adm'), adminController.dashboard)
+router.get('/dashboard', isLoggedIn, authRole('adm'), adminController.dashboard)
 
 // Gerenciar dados
-router.get('/admin/professores', isLoggedIn, authRole('adm'), adminController.listarProfessores)
-router.get('/admin/alunos', isLoggedIn, authRole('adm'), adminController.listarAlunos)
-router.get('/admin/funcionarios', isLoggedIn, authRole('adm'), adminController.listarFuncionarios)
+router.get('/admin/professores', isLoggedIn, authRole('adm'), adminController.listarPf)
+router.get('/admin/alunos', isLoggedIn, authRole('adm'), adminController.listarAl)
+router.get('/admin/funcionarios', isLoggedIn, authRole('adm'), adminController.listarFc)
 
 module.exports = router

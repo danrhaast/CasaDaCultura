@@ -1,38 +1,33 @@
-// scripts/createAdmin.js
-require('dotenv').config()
-const bcrypt = require('bcrypt')
-const Usuario = require('../B.models/usuarioModels')
-const db = require('../A.banco_de_dados/db')
+// F.scripts/createAdmin.js
+const bcrypt = require('bcrypt');
+const Usuario = require('../B.models/usuarioModels');
+const db = require('../A.banco_de_dados/db');
 
-async function main() {
-  try {
-    await db.sequelize.authenticate()
-    console.log('Conexão ok')
+(async () => {
+    try {
+        await db.sequelize.sync(); // garante que a tabela exista
 
-    const email = 'admin@casacultura.local' // seu e-mail de admin
-    const senha = 'daninhogotoso'           // defina uma senha segura
+        const senhaHash = await bcrypt.hash('admin123', 10);
 
-    // já existe?
-    const exists = await Usuario.findOne({ where: { email } })
-    if (exists) {
-      console.log('⚠️ Admin já existe!')
-      return process.exit(0)
+        const [admin, created] = await Usuario.findOrCreate({
+            where: { email: 'admin@cultura.com' },
+            defaults: {
+                nome: 'Administrador',
+                email: 'admin@cultura.com',
+                senha: senhaHash,
+                role: 'adm'
+            }
+        });
+
+        if (created) {
+            console.log('✅ Usuário admin criado com sucesso!');
+        } else {
+            console.log('⚠️ Usuário admin já existia.');
+        }
+
+        process.exit(0);
+    } catch (error) {
+        console.error('❌ Erro ao criar admin:', error);
+        process.exit(1);
     }
-
-    const hash = await bcrypt.hash(senha, 10)
-    await Usuario.create({
-      nome: 'Administrador',
-      email,
-      senha: hash,
-      role: 'adm'
-    })
-
-    console.log('✅ Admin criado com sucesso!')
-    process.exit(0)
-  } catch (err) {
-    console.error('Erro ao criar admin:', err)
-    process.exit(1)
-  }
-}
-
-main()
+})();
